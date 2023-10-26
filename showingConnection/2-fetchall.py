@@ -1,6 +1,6 @@
 import mysql.connector, json
 
-with open('secrets.json', 'r') as secretFile:
+with open('/home/jeff/databaseExample/showingConnection/secrets.json', 'r') as secretFile:
     creds = json.load(secretFile)['mysqlCredentials']
 
 
@@ -10,9 +10,11 @@ mycursor = connection.cursor()
 mycursor.execute("select * from speaker")
 myresult = mycursor.fetchall()
 
+print(f"{myresult=}")
+
 print("In the speaker table, we have the following items:")
 for row in myresult:
     print(row)
 
 mycursor.close()
-mydb.close()
+connection.close()
