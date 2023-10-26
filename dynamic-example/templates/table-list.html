@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block header %}
+  Example Table
+{% endblock %}
+
+{% block content %}
+
+<table>
+  {% for row in collection %}
+  <tr>
+    <td>
+      {{row['firstname']}}
+    </td>
+    <td>
+      {{row['lastname']}}
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+{% endblock %}
