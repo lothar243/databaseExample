@@ -1,8 +1,13 @@
 <!doctype html>
-<title>{% block title %}{% endblock %} - Flaskr</title>
-<link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-<header>
-   {% block header %}{% endblock %}
-</header>
-<body>{{navbar | safe}}{% block content %}{% endblock %}</body>
-</section>
+<html>
+   <head>
+      <title>{% block title %}{% endblock %} - Flaskr</title>
+      <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+   </head>
+   <body>
+      <h1>
+         {% block header %}{% endblock %}
+      </h1>
+      {{navbar | safe}}{% block content %}{% endblock %}
+   </body>
+</html>
