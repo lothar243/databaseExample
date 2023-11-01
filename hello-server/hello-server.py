@@ -16,7 +16,7 @@ def premade():
 
 @app.route('/dynamic')
 def dynamic():
-    output = render_template('dynamic.html', myText="<h1>From Python<h1>")
+    output = render_template('dynamic.html', myText="<h1>From Python</h1>")
     return output
 
 if __name__ == '__main__':
