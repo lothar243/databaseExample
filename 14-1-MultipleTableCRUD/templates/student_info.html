@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block header %}{{pageTitle}}{% endblock %}
+{% block title %}Student Information{% endblock %}
+
+
+{% block content %}
+
+<form action="">
+  <input type="text" name="first_name" value="{{first_name}}"><br />
+  <input type="text" name="last_name" value="{{last_name}}"><br />
+  <input type="hidden" name="student_id" value="{{student_id}}"><br />
+  <input type="submit" value="Update Information">
+</form>
+
+Registered Sections
+<table>
+  <tr>
+    <th>Section ID</th>
+    <th>Course Name</th>
+    <th>Course Code</th>
+    <th>Section Meeting Time</th>
+    <th>Section Meeting Days</th>
+    <th>Section Meeting Room</th>
+  </tr>
+  {% for section in registered_sections %}
+  <tr>
+    <td>
+      {{section[0]}}
+    </td>
+    <td>
+      {{section[1]}}
+    </td>
+    <td>
+      {{section[2]}}
+    </td>
+    <td>{{section[3]}}</td>
+    <td>{{section[4]}}</td>
+    <td>{{section[5]}}</td>
+    <td>
+      <a href="/student-info?student_id={{student_id}}&drop_section_id={{section[0]}}">Unregister</a><br />
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+<form action=""">
+<p><label for="register">Register for additional sections</label></p>
+<select id="register" name="add_section_id">
+  {% for section in unregistered_sections %}
+  <option value="{{section[0]}}">{{section[0]}} - {{section[1]}} ({{section[2]}})</option>
+  {% endfor %}
+</select>
+<input type="hidden" name="student_id" value="{{student_id}}">
+<input type="submit" value="Add section">
+</form>
+{% endblock %}

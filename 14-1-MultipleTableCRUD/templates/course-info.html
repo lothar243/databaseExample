@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block header %}{{pageTitle}}{% endblock %}
+{% block title %}Course Info{% endblock %}
+
+
+{% block content %}
+
+
+<form action="">
+  <h2>Information for Course {{course_id}} <input type="hidden" name="course_id" value="{{course_id}}"><br /></h2>
+  Course Name: <input type="text" value="{{course_name}}" name="course_name"><br />
+  Course Code: <input type="text" value="{{course_code}}" name="course_code"><br />
+  <input type="submit" value="Update Information">
+</form>
+
+<h2>Existing Sections</h2>
+
+<table>
+  <tr>
+    <th>Section ID</th>
+    <th>Meeting Time</th>
+    <th>Meeting Days</th>
+    <th>Meeting Room</th>
+  </tr>
+{% for section in existingSections %}
+  <tr>
+    <td><a href="section-info?section_id={{section[0]}}">{{section[0]}}</a></td>
+    <td>{{section[1]}}</td>
+    <td>{{section[2]}}</td>
+    <td>{{section[3]}}</td>
+  </tr>
+{% endfor%}
+
+</table>
+{% endblock %}

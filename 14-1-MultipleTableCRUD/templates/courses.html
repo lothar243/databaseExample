@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block header %}{{pageTitle}}{% endblock %}
+{% block title %}Showing Courses{% endblock %}
+
+
+{% block content %}
+<table>
+  <tr>
+    <th>Course ID</th>
+    <th>Course Name</th>
+    <th>Course Code</th>
+  </tr>
+  {% for row in allCourses %}
+  <tr>
+    <td>{{row[0]}}</td>
+    <td>{{row[1]}}</td>
+    <td>{{row[2]}}</td>
+    <td>
+      <a href="/course-info?course_id={{row[0]}}">View Course</a><br />
+      <a href="/courses?delete_course_id={{row[0]}}">Delete Course</a><br />
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+
+<h3>Add new Course</h3>
+<form action="">
+  Section ID: <input name="new_course_id" ><br />
+  Course Name: <input type="text" name="new_course_name"><br />
+  Course Code: <input type="text" name="new_course_code"><br />
+  <input type="submit" value="Add Course">
+</form>
+{% endblock %}
