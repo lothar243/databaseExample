@@ -1,3 +1,6 @@
+#!/usr/bin/python3
+
+
 import mysql.connector, os
 
 connection = mysql.connector.connect(
@@ -6,5 +9,9 @@ connection = mysql.connector.connect(
     password=os.environ['SQL_PWD'],
     db=os.environ['SQL_DB']
 )
-print(connection)
+
+mycursor = connection.cursor()
+mycursor.execute("insert into speaker (name) values ('jeff arends');")
+connection.commit()
+
 connection.close()
