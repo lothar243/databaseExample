@@ -8,6 +8,9 @@ with open('/home/jeff/databaseExample/14-1-MultipleTableCRUD/secrets.json', 'r')
 
 app = Flask(__name__)
 
+@app.route('/')
+def default():
+    return render_template('base.html')
 
 @app.route('/section-info', methods=['GET'])
 def get_section_info():
