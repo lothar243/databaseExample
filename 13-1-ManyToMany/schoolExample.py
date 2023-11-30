@@ -8,11 +8,15 @@ with open('secrets.json', 'r') as secretFile:
 
 app = Flask(__name__)
 
+@app.route('/')
+def index():
+    return render_template('base.html')
 
 @app.route('/student', methods=['GET'])
 def showStudents():
     connection = mysql.connector.connect(**creds)
     mycursor = connection.cursor()
+    mycursor2 = connection.cursor()
 
     # If there is a section_id 'GET' variable, use this to refine the query
     sectionID = request.args.get('section_id')

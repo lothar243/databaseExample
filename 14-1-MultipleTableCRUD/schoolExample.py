@@ -109,8 +109,6 @@ def get_student_info():
                          where section_student.student_id=%s""", (student_id,))
     registered_sections = mycursor.fetchall()
     
-    mycursor.close()
-    connection.close()
 
     # retrieve a list of other courses the student can register for
     mycursor.execute("""SELECT section.id,course_name,course_code
