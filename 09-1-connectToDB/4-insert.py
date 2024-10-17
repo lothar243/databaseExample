@@ -11,7 +11,7 @@ connection = mysql.connector.connect(
 )
 
 mycursor = connection.cursor()
-mycursor.execute("insert into speaker (name) values ('jeff arends');")
+mycursor.execute("insert into actor (first_name, last_name) values ('jeff', 'arends');")
 connection.commit()
 
 connection.close()

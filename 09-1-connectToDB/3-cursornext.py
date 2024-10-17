@@ -4,9 +4,9 @@ import mysql.connector, os
 # To work, you need to have a file named .bash_profile in your home directory with the following contents
 """
 export SQL_HOST='127.0.0.1'
-export SQL_USER='www'
+export SQL_USER='jeff'
 export SQL_PWD='mypass'
-export SQL_DB='miscon'
+export SQL_DB='sakila'
 """
 
 
@@ -18,10 +18,10 @@ connection = mysql.connector.connect(
 )
 
 mycursor = connection.cursor()
-mycursor.execute("select * from speaker")
+mycursor.execute("select * from actor")
 myresult = mycursor.fetchone()
 
-print("In the speaker table, we have the following items:")
+print("In the actor table, we have the following items:")
 while myresult is not None:
     print(myresult)
     myresult = mycursor.fetchone()

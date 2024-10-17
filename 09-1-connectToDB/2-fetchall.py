@@ -7,12 +7,12 @@ with open('/home/jeff/databaseExample/09-1-connectToDB/secrets.json', 'r') as se
 connection = mysql.connector.connect(**creds)
 
 mycursor = connection.cursor()
-mycursor.execute("select * from speaker")
+mycursor.execute("select * from actor")
 myresult = mycursor.fetchall()
 
 print(f"{myresult=}")
 
-print("In the speaker table, we have the following items:")
+print("In the actor table, we have the following items:")
 for row in myresult:
     print(row)
 
