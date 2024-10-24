@@ -38,7 +38,7 @@ def renderTablePost():
 def renderMultiple():
     exampleCollection = [{'firstname':'test1', 'lastname':'test2'},
                          {'firstname':'test3', 'lastname':'test4'}]
-    output = render_template('table-list.html', collection=exampleCollection)
+    output = render_template('table.html', collection=exampleCollection)
     return output 
 
 
