@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block header %}
-  MisCon Speakers
+Sakila Actors
 {% endblock %}
 
 {% block content %}
 
 <table>
   <tr>
-    <th>ID</th>
-    <th>Name</th>
-    <th>Description</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Last update</th>
   </tr>
   {% for row in collection %}
   <tr>
@@ -26,10 +26,10 @@
   </tr>
   {% endfor %}
 </table>
-<h2>Enter a new value here</h2>
+<h2>Insert a new value here</h2>
 <form action="">
-  Name: <input type="text" name="name"><br />
-  Description: <textarea name="desc"></textarea><br />
+  First Name: <input type="text" name="firstname"><br />
+  Last Name: <input type="text" name="lastname"><br />
   <input type="submit" value="Submit">
 </form>
 {% endblock %}
