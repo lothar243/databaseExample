@@ -2,6 +2,7 @@
 
 from flask import Flask, render_template, request
 import mysql.connector, os
+import json
 
 
 app = Flask(__name__)
@@ -11,18 +12,16 @@ app = Flask(__name__)
 def showTable():
     """This is vulnerable to the following SQL injection:
     http://localhost:8000/?id=1' or 1=1 --%20"""
-    connection = mysql.connector.connect(
-        host=os.environ['SQL_HOST'],
-        user=os.environ['SQL_USER'],
-        password=os.environ['SQL_PWD'],
-        db=os.environ['SQL_DB']
-    )
+    with open('/home/jeff/databaseExample/09-1-connectToDB/secrets.json', 'r') as secretFile:
+        creds = json.load(secretFile)['mysqlCredentials']
+
+    connection = mysql.connector.connect(**creds)
     mycursor = connection.cursor()
 
     id = request.args.get('id')
 
     # Fetch the value from the table with a matching ID
-    sqlstring = "Select * from speaker where id='{}'".format(id)
+    sqlstring = "Select * from actor where actor_id='{}'".format(id)
     print(sqlstring)
     mycursor.execute(sqlstring)
     myresult = mycursor.fetchall()
