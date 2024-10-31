@@ -1,0 +1,15 @@
+<html>
+
+<body>
+    <a href="/">Return to menu</a><br />
+    <ul>
+        {% for actor in actors %}
+        <li> {{actor.actor_id }} - {{ actor.first_name }} {{actor.last_name}}
+            <a href="updateform?id={{actor.actor_id}}">update</a>
+            <a href="delete?id={{actor.actor_id}}">delete</a>
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
