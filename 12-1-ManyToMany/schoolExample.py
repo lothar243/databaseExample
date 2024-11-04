@@ -93,7 +93,7 @@ def showSections():
     connection.close()
     print(f"{studentID=}")
     return render_template('sections.html', 
-                           studentList=sections, 
+                           sectionList=sections, 
                            pageTitle=pageTitle, 
                            othersections=othersections, 
                            studentId=studentID 
