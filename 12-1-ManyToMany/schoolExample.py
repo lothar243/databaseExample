@@ -58,7 +58,7 @@ def showSections():
         myresult = mycursor.fetchall()
         print(myresult)
         if len(myresult) >= 1:
-            studentName = myresult[0][2] + " " + myresult[0][3]
+            studentName = myresult[0][3] + " " + myresult[0][4]
         else:
             studentName = "Unknown"
         pageTitle = f"Showing all sections for student: {studentName})"
