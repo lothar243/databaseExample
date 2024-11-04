@@ -12,7 +12,7 @@ app = Flask(__name__)
 def index():
     return render_template('base.html')
 
-@app.route('/student', methods=['GET'])
+@app.route('/showStudents', methods=['GET'])
 def showStudents():
     connection = mysql.connector.connect(**creds)
     mycursor = connection.cursor()
@@ -40,9 +40,9 @@ def showStudents():
 
     mycursor.close()
     connection.close()
-    return render_template('student.html', studentList=myresult, pageTitle=pageTitle)
+    return render_template('students.html', studentList=myresult, pageTitle=pageTitle)
 
-@app.route('/section', methods=['GET'])
+@app.route('/showSections', methods=['GET'])
 def showSections():
     connection = mysql.connector.connect(**creds)
     mycursor = connection.cursor()
@@ -50,27 +50,54 @@ def showSections():
     # If there is a student_id 'GET' variable, use this to refine the query
     studentID = request.args.get('student_id')
     if studentID is not None:
-        mycursor.execute("""SELECT section.id,course_name,course_code,first_name,last_name from student 
+        # Check if the student is registering for a new class
+        registerSectionId = request.args.get('register_section_id')
+        if registerSectionId is not None:
+            mycursor.execute("""INSERT into section_student (student_id, section_id) values (%s, %s)
+                             """, (studentID, registerSectionId))
+            connection.commit()
+
+        mycursor.execute("""SELECT section.id,course_name,course_code,first_name,last_name 
+                         from student 
                          join section_student on student.id=section_student.student_id
                          join section on section.id=section_student.section_id
                          join course on course.id=section.course_id
                          where student.id=%s""", (studentID,))
-        myresult = mycursor.fetchall()
-        print(myresult)
-        if len(myresult) >= 1:
-            studentName = myresult[0][3] + " " + myresult[0][4]
+        sections = mycursor.fetchall()
+        print(sections)
+        if len(sections) >= 1:
+            studentName = sections[0][3] + " " + sections[0][4]
+            mycursor.execute("""SELECT section.id, course_name, course_code
+                                FROM section
+                                Join course on course.id=section.course_id
+                                WHERE section.id not in (
+                                    SELECT section_id
+                                    from section_student
+                                    where section_student.student_id=%s
+                                )
+                             """, (studentID,))
+            othersections = mycursor.fetchall()
+            print(othersections)
         else:
             studentName = "Unknown"
+            othersections = None
         pageTitle = f"Showing all sections for student: {studentName})"
     else:
         mycursor.execute("""SELECT section.id, course_name, course_code from section
                          join course on section.course_id=course.id""")
         pageTitle = "Showing all sections"
-        myresult = mycursor.fetchall()
+        sections = mycursor.fetchall()
+        othersections = None
 
     mycursor.close()
     connection.close()
-    return render_template('section.html', studentList=myresult, pageTitle=pageTitle)
+    print(f"{studentID=}")
+    return render_template('sections.html', 
+                           studentList=sections, 
+                           pageTitle=pageTitle, 
+                           othersections=othersections, 
+                           studentId=studentID 
+                           )
 
 
 if __name__ == '__main__':

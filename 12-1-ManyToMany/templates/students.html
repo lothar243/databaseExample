@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block header %}{{pageTitle}}{% endblock %}
-{% block title %}Showing Sections{% endblock %}
+{% block title %}Showing Students{% endblock %}
 
 
 {% block content %}
 
 <table>
   <tr>
-    <th>Section ID</th>
-    <th>Course Name</th>
-    <th>Course Code</th>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
   </tr>
   {% for row in studentList %}
   <tr>
@@ -24,7 +24,7 @@
       {{row[2]}}
     </td>
     <td>
-      <a href="/student?section_id={{row[0]}}">View Registered Students</a><br />
+      <a href="/showSections?student_id={{row[0]}}">View Registered Sections</a><br />
     </td>
   </tr>
   {% endfor %}
