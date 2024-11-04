@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block header %}{{pageTitle}}{% endblock %}
+{% block title %}Showing Sections{% endblock %}
+
+
+{% block content %}
+
+<table>
+  <tr>
+    <th>Section ID</th>
+    <th>Course Name</th>
+    <th>Course Code</th>
+  </tr>
+
+  {% for section in sectionList %}
+  <tr>
+    <td>
+      {{section.id}}
+    </td>
+    <td>
+      {{section.course.course_name}}
+    </td>
+    <td>
+      {{section.course.course_code}}
+    </td>
+    <td>
+      <a href="/showStudents?section_id={{section.id}}">View Registered Students</a><br />
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% if othersections %}
+<form>
+  <select name="register_section_id">
+    <option>Register for another section</option>
+    {% for othersection in othersections %}
+    <option value='{{ othersection.id }}'>{{othersection.course_name}} Section {{othersection.id}} (CRN
+      {{othersection.course_code}})
+    </option>
+    {% endfor %}
+  </select>
+  <button type="submit" value="register">Register for new class</button>
+  <input type="hidden" name="student_id" value="{{ studentId }}" />
+</form>
+{% endif %}
+
+{% endblock %}

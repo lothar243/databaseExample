@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block header %}{{pageTitle}}{% endblock %}
+{% block title %}Showing Students{% endblock %}
+
+
+{% block content %}
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>First Name</th>
+    <th>Last Name</th>
+  </tr>
+  {% for student in studentList %}
+  <tr>
+    <td>
+      {{student.id}}
+    </td>
+    <td>
+      {{student.first_name}}
+    </td>
+    <td>
+      {{student.last_name}}
+    </td>
+    <td>
+      <a href="/showSections?student_id={{student.id}}">View Registered Sections</a><br />
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+{% endblock %}
