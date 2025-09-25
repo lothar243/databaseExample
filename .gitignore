@@ -1,2 +1,3 @@
 showingConnection/secrets.json
 venv
+**/.env

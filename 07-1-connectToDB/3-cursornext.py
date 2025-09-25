@@ -1,7 +1,9 @@
 import mysql.connector, os
 
-# This example uses Linux environment variables to store the credentials
+# This example uses a Linux environment variables to store the credentials
 # To work, you need to have a file named .bash_profile in your home directory with the following contents
+# You will need to reconnect if you just created the file (it is run when you first start bash)
+# You can alternatively load these credentials into environment variables with 'source filename'
 """
 export SQL_HOST='127.0.0.1'
 export SQL_USER='jeffdb'
