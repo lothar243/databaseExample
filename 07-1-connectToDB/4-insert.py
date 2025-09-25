@@ -11,6 +11,7 @@ SQL_DB='sakila'
 
 
 import mysql.connector, os
+from dotenv import load_dotenv
 
 connection = mysql.connector.connect(
     host=os.environ['SQL_HOST'],
