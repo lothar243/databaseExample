@@ -14,10 +14,10 @@ import mysql.connector, os
 from dotenv import load_dotenv
 
 connection = mysql.connector.connect(
-    host=os.environ['SQL_HOST'],
-    user=os.environ['SQL_USER'],
-    password=os.environ['SQL_PWD'],
-    db=os.environ['SQL_DB']
+    host=os.getenv('SQL_HOST'),
+    user=os.getenv('SQL_USER'),
+    password=os.getenv('SQL_PWD'),
+    db=os.getenv('SQL_DB')
 )
 
 mycursor = connection.cursor()
