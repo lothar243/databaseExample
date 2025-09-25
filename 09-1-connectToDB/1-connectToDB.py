@@ -5,16 +5,16 @@
 {
     "mysqlCredentials": {
         "host":"127.0.0.1",
-        "user":"www",
+        "user":"jeffdb",
         "password":"mypass",
-        "db":"miscon"
+        "db":"sakila"
     }
 }
 """
 
 import mysql.connector, json
 
-with open('/home/jeff/databaseExample/09-1-connectToDB/secrets.json', 'r') as secretFile:
+with open('/home/jeff/databaseExample/07-1-connectToDB/secrets.json', 'r') as secretFile:
     creds = json.load(secretFile)['mysqlCredentials']
 
 connection = mysql.connector.connect(**creds)

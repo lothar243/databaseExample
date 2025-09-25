@@ -4,7 +4,7 @@ import mysql.connector, os
 # To work, you need to have a file named .bash_profile in your home directory with the following contents
 """
 export SQL_HOST='127.0.0.1'
-export SQL_USER='jeff'
+export SQL_USER='jeffdb'
 export SQL_PWD='mypass'
 export SQL_DB='sakila'
 """
