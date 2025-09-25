@@ -1,6 +1,6 @@
 import mysql.connector, json
 
-with open('/home/jeff/databaseExample/07-1-connectToDB/secrets.json', 'r') as secretFile:
+with open('secrets.json', 'r') as secretFile:
     creds = json.load(secretFile)['mysqlCredentials']
 
 
