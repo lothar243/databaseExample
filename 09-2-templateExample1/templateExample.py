@@ -4,10 +4,13 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-
 @app.route('/')
-def hello():
-    return '<html><body><h1>Hello, this was rendered directly from Python</h1></body</html>'
+def home():
+    return(render_template('index.html'))
+
+@app.route('/about')
+def about():
+    return(render_template('about.html'))
 
 @app.route('/premade')
 def premade():
@@ -18,6 +21,11 @@ def premade():
 def dynamic():
     output = render_template('dynamic.html', myText="<h1>From Python</h1>")
     return output
+
+@app.route('/forloop')
+def forloop():
+    mylist = [1, 2, 3, 4, 5, 6, 7, 8]
+    return render_template('forloop.html', mylist=mylist)
 
 if __name__ == '__main__':
     app.run(port=8000, debug=True, host="0.0.0.0")
