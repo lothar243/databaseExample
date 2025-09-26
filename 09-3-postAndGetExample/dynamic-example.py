@@ -8,25 +8,24 @@ app = Flask(__name__)
 def index():
     return render_template("index.html")
 
-@app.route('/form-get.html')
+@app.route('/getform')
 def renderFormGet():
     output = render_template('form-get.html')
     return output 
 
-@app.route('/submitformGet.html', methods=['GET'])
+@app.route('/gettable', methods=['GET'])
 def renderTableGet():
     firstname = request.args.get('fname')
-    print(firstname)
     lastname = request.args.get('lname')
     output = render_template('table.html', firstname=firstname, lastname=lastname)
     return output 
 
-@app.route('/form-post.html')
+@app.route('/postform')
 def renderFormPost():
     output = render_template('form-post.html')
     return output 
 
-@app.route('/submitformPost.html', methods=['POST'])
+@app.route('/posttable', methods=['POST'])
 def renderTablePost():
     firstname = request.form.get('fname')
     lastname = request.form.get('lname')
@@ -38,7 +37,7 @@ def renderTablePost():
 def renderMultiple():
     exampleCollection = [{'firstname':'test1', 'lastname':'test2'},
                          {'firstname':'test3', 'lastname':'test4'}]
-    output = render_template('table.html', collection=exampleCollection)
+    output = render_template('table-list.html', collection=exampleCollection)
     return output 
 
 
