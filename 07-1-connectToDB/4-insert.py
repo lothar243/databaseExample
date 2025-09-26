@@ -24,6 +24,8 @@ connection = mysql.connector.connect(
 
 mycursor = connection.cursor()
 mycursor.execute("insert into actor (first_name, last_name) values ('jeff', 'arends');")
+# connection.rollback() # optionally, abandon changes before they are written
 connection.commit()
+
 
 connection.close()

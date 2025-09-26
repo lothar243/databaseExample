@@ -25,8 +25,8 @@ connection = mysql.connector.connect(
 mycursor = connection.cursor()
 firstname = input("Please give the first name of the actor: ")
 lastname = input("Please give the last name of the actor: ")
-# mycursor.execute("insert into actor (first_name, last_name) values (firstname, lastname);") # vulnerable to SQL injection
-
+# mycursor.execute(f"insert into actor (first_name, last_name) values ('{firstname}', '{lastname}');") # vulnerable to SQL injection
+# This could be exploited by using a last name of: qwer'), ('second', 'unexpected'), ('other', 'possible commands
 query = "insert into actor (first_name, last_name) values (%s, %s);"
 mycursor.execute(query, (firstname, lastname))
 
