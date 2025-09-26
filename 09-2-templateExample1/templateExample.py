@@ -27,5 +27,13 @@ def forloop():
     mylist = [1, 2, 3, 4, 5, 6, 7, 8]
     return render_template('forloop.html', mylist=mylist)
 
+@app.route('/basehome')
+def basehome():
+    return render_template('basehome.html')
+
+@app.route('/baseabout')
+def baseabout():
+    return render_template('baseabout.html')
+
 if __name__ == '__main__':
     app.run(port=8000, debug=True, host="0.0.0.0")

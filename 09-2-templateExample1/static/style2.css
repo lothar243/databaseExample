@@ -1,0 +1,80 @@
+/* Reset */
+body,
+h1,
+h2,
+p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Global body styles */
+body {
+    font-family: "Courier New", monospace;
+    background-color: #222;
+    /* Dark background */
+    color: #eee;
+    /* Light text */
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Header styles */
+header {
+    background-color: #ff6600;
+    /* Bright orange */
+    color: black;
+    padding: 15px;
+    border: 3px dashed yellow;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Navigation */
+nav a {
+    color: black;
+    background: yellow;
+    padding: 5px 10px;
+    margin: 0 5px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    background: red;
+    color: white;
+}
+
+/* Main content */
+main {
+    background: #999;
+    padding: 20px;
+    border: 2px solid #ff6600;
+    border-radius: 8px;
+    margin-top: 15px;
+}
+
+h2 {
+    color: #ffcc00;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 10px;
+    font-style: italic;
+}
+
+/* Footer */
+footer {
+    margin-top: 20px;
+    font-size: 0.9em;
+    color: #ccc;
+    text-align: center;
+    border-top: 2px dotted #ff6600;
+    padding-top: 10px;
+}
