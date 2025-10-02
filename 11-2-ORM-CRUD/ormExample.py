@@ -1,6 +1,7 @@
 #! /usr/bin/python3
+
 from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy                     # need to install flask-sqlalchemy and pymysql
+from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 import json
 
