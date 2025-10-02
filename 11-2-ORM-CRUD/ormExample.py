@@ -1,12 +1,12 @@
 #! /usr/bin/python3
 from flask import Flask, render_template, request, redirect
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy                     # need to install flask-sqlalchemy and pymysql
 from datetime import datetime
 import json
 
-app = Flask(__name__)
+app = Flask(__name__) # creates a flask application object
 
-with open('/home/jeff/databaseExample/09-1-connectToDB/secrets.json', 'r') as secretFile:
+with open('secrets.json', 'r') as secretFile:
     creds = json.load(secretFile)['mysqlCredentials']
 
 # example database uri = "mysql+pymysql://jeff:mypass@localhost/sakila"
