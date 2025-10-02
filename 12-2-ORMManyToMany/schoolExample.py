@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 
 from flask import Flask, render_template, request, redirect, url_for
-import mysql.connector, os, json
+import json
 from extensions import db
 from models import *
 from sqlalchemy import text
