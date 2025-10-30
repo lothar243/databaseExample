@@ -1,0 +1,13 @@
+<html>
+
+<body>
+    <a href="/">Return to menu</a><br />
+    <ul>
+        {% for film in films %}
+        <li> {{film.film_id }} - {{ film.title }} ({{film.language.name}})
+        </li>
+        {% endfor %}
+    </ul>
+</body>
+
+</html>
