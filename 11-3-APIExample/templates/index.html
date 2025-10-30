@@ -1,0 +1,29 @@
+<html>
+    <body>
+        <a href="/login">Log in</a> 
+        <a href="/logout">Log out</a>
+        <h2>Insert actor via API call</h2>
+        <form action="/api/actors" method="POST">
+            First name: <input type="text" name="firstname" /><br />
+            Last name: <input type="text" name="lastname" /><br />
+            <input type="submit">
+        </form>
+        <h2>Delete actor via API call</h2>
+        <form id="deleteForm">
+            Actor Id<input type="text" id="deleteActorId">
+            <button type="submit">Delete Actor</button>
+        </form>
+
+<script>
+document.getElementById("deleteForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const actorId = document.getElementById("deleteActorId").value;
+  const response = await fetch(`/api/actors/${actorId}/delete`, {
+    method: "DELETE"
+  });
+  const text = await response.text();
+  alert(text);
+});
+</script>
+    </body>
+</html>
