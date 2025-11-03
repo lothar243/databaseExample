@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
 import mysql.connector, os, json
 
 
-with open('/home/jeff/databaseExample/09-1-connectToDB/secrets.json', 'r') as secretFile:
+with open('secrets.json', 'r') as secretFile:
     creds = json.load(secretFile)['mysqlCredentials']
 
 connection = mysql.connector.connect(**creds)
